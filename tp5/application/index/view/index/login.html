@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="__PUBLIC__/js/mui.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/css/mui.min.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/css/log.css"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title" style="color: #000000;">选择酒店</h1>
+	</header>
+	<div class="mui-content">
+		<div class="mui-card">
+			<div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group mui-slider-loop">
+			    <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="__PUBLIC__/image/diancanA1.jpg">
+			      </a>
+			    </div>
+			    <!-- 第一张 -->
+			    <div class="mui-slider-item">
+			      <a href="log/log_1.html">
+			        <img src="__PUBLIC__/image/ad.jpg">
+			        <p class="mui-slider-title">余乐酒店管家</p>
+			      </a>
+			    </div>
+			    <!-- 第二张 -->
+			    <div class="mui-slider-item">
+			      <a href="log/log_2.html">
+			        <img src="__PUBLIC__/image/cbd3.jpg">
+			        <p class="mui-slider-title">上海商务区</p>
+			      </a>
+			    </div>
+			    <!-- 第三张 -->
+			    <div class="mui-slider-item">
+			      <a href="log/log_3.html">
+			        <img src="__PUBLIC__/image/diancanA2.jpg">
+			        <p class="mui-slider-title">幸福潮流</p>
+			      </a>
+			    </div>
+			    <!-- 第四张 -->
+			    <div class="mui-slider-item">
+			      <a href="log/log_4.html">
+			        <img src="__PUBLIC__/image/diancanA1.jpg">
+			        <p class="mui-slider-title">诗和远方</p>
+			      </a>
+			    </div>
+			    <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+			    <div class="mui-slider-item mui-slider-item-duplicate">
+			      <a href="#">
+			        <img src="__PUBLIC__/image/ad.jpg">
+			        <p class="mui-slider-title">余乐酒店管家</p>
+			      </a>
+			    </div>
+			  </div>
+			  <div class="mui-slider-indicator">
+			    <div class="mui-indicator mui-active"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>
+			    <div class="mui-indicator"></div>
+			  </div>
+			</div>			
+			<ul class="mui-table-view">
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right">
+		               <span class="mui-badge mui-badge-green">{$len}</span>有效酒店
+		            </a>
+	            {volist name="data" id="vo"}
+		            <div class="mui-collapse-content">
+		            	<!--页眉，放置标题-->
+		            	<div class="mui-card-header">
+		            		{$vo.hotelname}<p class="weizhi">{$vo.registetime}</p>
+		            	</div>
+		            	<!--内容区-->
+		            	<div class="mui-card-content">
+		            		<div class="mui-card-content-inner">
+		            			<a href="index.php/index/index/home">
+		            				<p class="denglu-color">{$vo.username}<span class="weizhi">您第<span class="mui-badge mui-badge-blue">{$vo.cishu}</span>次登录</span></p>
+		            			</a>
+		            		</div>		            		
+		            	</div>
+		            	<!--页脚，放置补充信息或支持的操作-->
+		            	<div class="mui-card-footer">
+		            		<a class="mui-card-link">
+		            			最近登录:{$vo.logintime}
+		            		</a>
+		            		<a class="mui-card-link">
+		            			失效时间:{$vo.losetime}
+		            		</a>
+		            	</div>	            	
+		        {/volist}
+		            </div>
+		        </li>
+		        <li class="mui-table-view-cell">
+		            <a class="mui-navigate-right">
+		                 待处理
+		            </a>
+		        </li>
+		        <li class="mui-table-view-cell">
+		            <a class="mui-navigate-right">
+		                 失效酒店
+		            </a>
+		        </li>
+		        <li class="mui-table-view-cell">
+		            <a href="log/shenqing.html">
+		                 <div class="mui-content-padded">
+					    	<button type="button" class="mui-btn mui-btn-blue mui-btn-block">申请更多</button>
+					    </div>
+		            </a>
+		        </li>
+		  	</ul>			
+		</div>
+	</div>
+	
+	<!--图片轮播-->
+	<script type="text/javascript">
+		//	图片自动轮播 
+		var Slider= mui("#slider");
+		Slider.slider({
+		  interval:2000
+		});
+	</script>
+</body>
+</html>
