@@ -1,0 +1,378 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="__PUBLIC__/css/mui.min.css" rel="stylesheet"/>
+	<link href="__PUBLIC__/css/iconfont.css" rel="stylesheet"/>
+	<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/mui.picker.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css"/>
+</head>
+<body>
+	__PUBLIC__
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" href="#shouye">
+	        <span class="mui-icon iconfont icon-tubiaoku-caiwushujuzonghefenxi"></span>
+	        <span class="mui-tab-label">综合</span>
+	    </a>
+	    <a class="mui-tab-item" href="#fangtai">
+	        <span class="mui-icon iconfont icon-fangtai"></span>
+	        <span class="mui-tab-label">房态</span>
+	    </a>
+	    <a class="mui-tab-item" href="#fangjiazoushi" id="fangjiazoushitu">
+	        <span class="mui-icon iconfont icon-zonghe"></span>
+	        <span class="mui-tab-label">房价走势</span>
+	    </a>
+	    <a class="mui-tab-item" href="#yejijianguan" id="yejijiamguantu">
+	        <span class="mui-icon iconfont icon-zaixianjianguan"></span>
+	        <span class="mui-tab-label">业绩监管</span>
+	    </a>
+	    <a class="mui-tab-item" href="#xufei">
+	        <span class="mui-icon iconfont icon-xufei"></span>
+	        <span class="mui-tab-label">续费</span>
+	    </a>
+	</nav>
+	<div class="mui-content">
+		<!--综合-->
+		<div id="shouye" class="mui-control-content mui-active">
+			<header id="head" class="mui-bar mui-bar-nav">
+			    <h1 class="mui-title">余乐通->综合</h1>
+			    <a class="btn mui-btn mui-pull-right" onclick="showDate();">日期选择</a>
+			</header>
+			<div class="mui-content">
+				<!--柱状图-->
+				<div id="barChart1" class="Chart" style="height: 200px;width: 100%; margin: 0; padding: 0;"></div>
+			</div>
+			<div id="mui-content">
+				<div class="yingyeshouru">
+			        <a href="../shouye/yingyeshouru.html">
+			            <p></p><p>营业收入</p><p>当日:￥{$data[0]['income']}</p><p>本月:￥</p>
+			        </a>
+			    </div>
+			    <div class="shoukuan">
+			        <a href="../shouye/shoukuan.html">
+			            <p></p><p>收款</p><p>当日:￥{$data[0]['account']}</p><p>本月:￥{$data[0]['account']}</p>
+			        </a>
+			    </div>
+			    <div class="shoufangshu">
+			        <a href="../shouye/shoufangshuANDjunjia.html">				           
+			            <p></p><p>售房数</p><p>当日:{$data[0]['saleroom']}</p><p>本月:{$data[0]['saleroom']}</p>
+			        </a>
+			    </div>
+			    <div class="junjia">
+			        <a href="../shouye/shoufangshuANDjunjia.html">				           
+			            <p></p><p>平均售价</p><p>当日:￥{$avg}</p><p>本月:￥{$avg}</p>
+			        </a>
+			    </div>
+			    <div class="ruzhulv">
+			        <a href="../shouye/ruzhulv.html">
+			            <p></p><p>入住率</p><p>当日:{$per}%</p><p>本月:{$per}%</p>
+			        </a>
+			  	</div>
+			  	<div class="jiezhangkuan">
+			        <a href="../shouye/jiezhangkuan.html">				           
+			            <p></p><p>结账账款</p><p>当日:￥{$data[0]['account']}</p><p>本月:￥{$data[0]['account']}</p>
+			        </a>
+				</div>
+			</div>	
+			
+			<div style="font-size: small;margin-left: 0.5em;">
+				本日：2018-07-26 00:00:01至2018-07-27 00:00:01<br/>
+				本月：2018-07-01 00:00:01至2018-07-27 00:00:01															
+			</div>
+			<div id="card" class="card">
+				<div class="mui-card-content">
+					电脑端数据更丰富还支持连锁哦！请用电脑浏览器打开1.1880880.com，然后用您的微信扫一扫即可登录。
+				</div>
+			</div>								
+		</div>
+					
+		<!--房态-->
+		<div id="fangtai" class="mui-control-content">
+			<header id="head" class="mui-bar mui-bar-nav">
+			    <a class="all mui-btn mui-pull-left" style="display: none;">全部</a>				
+			    <h1 class="mui-title">余乐通->实时房态</h1>
+			    <a class="mui-btn mui-pull-right" href="../fangtai/tongji.html">统计</a>			    
+			</header>
+			<div class="mui-content">				
+				<div class="box">
+					<div id="fangtai_tou">
+						<span class="kong">空闲:8间</span>
+						<span class="xi">清洗:123间</span>
+						<span class="zhu">入住:146间</span>
+						<span class="yu">预定:2间</span>
+						<span class="jin">禁止:0间</span>
+					</div>
+					<div id="tab">
+						<div class="kong">8230</div>
+						<div class="kong">8231</div>
+						<div class="kong">8232</div>
+						<div class="kong">8233</div>
+						<div class="kong">8234</div>
+						
+						<div class="xi">7335</div>
+						<div class="xi">7336</div>
+						<div class="xi">7337</div>
+						<div class="xi">7338</div>
+						<div class="xi">7339</div>
+						
+						<div class="zhu">6583</div>
+						<div class="zhu">6585</div>
+						<div class="zhu">6586</div>
+						<div class="zhu">6587</div>
+						<div class="zhu">6588</div>
+						
+						<div class="yu">2345</div>
+						<div class="yu">2346</div>
+						<div class="yu">2347</div>
+						<div class="yu">2348</div>
+						<div class="yu">2349</div>
+						
+						<div class="jin">1001</div>
+						<div class="jin">1002</div>
+						<div class="jin">1003</div>
+						<div class="jin">1004</div>
+						<div class="jin">1005</div>
+					</div>
+				</div>				
+			</div>	
+		</div>
+				
+		<!--房价走势-->
+		<div id="fangjiazoushi" class="mui-control-content">
+			<header id="head" class="mui-bar mui-bar-nav">	
+				<a class="btn mui-btn mui-pull-left" href="../fangjiazoushi/mingxiBtn.html">明细</a>
+			    <h1 class="mui-title">统计（房数：62间）</h1>
+				<a class="btn mui-btn mui-pull-right" id="switch-chart">均价图</a>   
+			</header>
+			<!--折线图-->
+			<div class="mui-content">																				
+				<!--均价图-->
+				<div id="lineChart1" class="Chart" style="height: 200px; margin: 0; padding: 0;"></div>
+									
+				<!--入住率图-->
+				<div id="lineChart2" class="Chart" style="margin: 0; padding: 0;"></div>
+									
+				<!--RevPAR图-->
+				<div id="lineChart3" class="Chart" style="margin: 0; padding: 0;"></div>
+									
+				<!--房价营收图-->
+				<div id="lineChart4" class="Chart" style="margin: 0; padding: 0;"></div>	
+				<div class="mui-content">
+					<table border="1" style="width: 100%; font-size:12px; border:1px solid #FFFFFF;">
+						<thead style="background: #26C0C0; color: #FFFFFF;">
+							<tr>
+								<td>日期</td>
+								<td>均价</td>
+								<td>入住率</td>
+								<td>RevPAR</td>
+								<td>房价营收</td>
+							</tr>						
+						</thead>
+						<tbody style="border:1px solid #FFFFFF;">			
+							<tr>
+								<td>2018-07-26</td>
+								<td>220.79</td>
+								<td>118.55</td>
+								<td>267.75</td>
+								<td>18062.84</td>
+							</tr>
+							<tr>
+								<td>2018-07-25</td>
+								<td>223.06</td>
+								<td>116.93</td>
+								<td>260.82</td>
+								<td>17604.96</td>
+							</tr>
+							<tr style="background: #26C0C0; color: #FFFFFF;">
+								<td>平均值</td>
+								<td>221.86</td>
+								<td>106.50</td>
+								<td>251.20</td>
+								<td>16330.36</td>
+							</tr>
+						</tbody>
+					</table>	
+				</div>
+			</div>
+		</div>
+			
+		<!--业绩监管-->
+		<div id="yejijianguan" class="mui-control-content">
+			<header id="head" class="mui-bar mui-bar-nav">
+				<a class="jianguan mui-btn mui-pull-right" href="../yejijianguan/jianguan.html">监管</a>
+			    <h1 class="mui-title">余乐通->周业绩排名</h1>
+			</header>
+			<div class="mui-content">
+			   <div class="mui-card">
+			   		<div class="mui-card-header">
+			   			<span style="font-size: small;">时间:2018-08-07至2018-08-14</span>
+			   			<p style="font-size: small;">本周冠军:<span style="color: #DD524D;">张发财</span></p>
+			   		</div>
+			   		<div class="mui-card-content">
+			   			<div id="yejibar" class="Chart" style="height: 200px;width: 100%; margin: 0; padding: 0;"></div>
+			   			<table border="1" style="width: 100%; font-size:12px; border-right:1px solid #FFFFFF;">
+							<thead style="background: #70B283; color: #FFFFFF;">
+								<tr>
+									<th>姓名</th>
+									<th>开房数</th>
+									<th>退房数</th>
+									<th>订房数</th>
+									<th>预接待</th>
+									<th>售卡数</th>
+									<th>充值数</th>
+								</tr>						
+							</thead>
+							<tbody style="border:1px solid #EFEFF4;">
+								<tr>
+									<td>张开手</td>
+									<td>74</td>
+									<td>28</td>
+									<td>10</td>
+									<td>15</td>
+									<td>0</td>
+									<td>6000</td>
+								</tr>	
+								<tr>
+									<td>张发财</td>
+									<td>72</td>
+									<td>58</td>
+									<td>14</td>
+									<td>20</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>				
+								<tr>
+									<td>绮梦</td>
+									<td>48</td>
+									<td>66</td>
+									<td>22</td>
+									<td>33</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>梦绮</td>
+									<td>26</td>
+									<td>22</td>
+									<td>10</td>
+									<td>5</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>									
+							</tbody>
+						</table>
+					<div id="">
+						<p style="font-size: small;">生成于2018-08-14 00:00:01</p>					
+					</div>
+		   		</div>
+		   		<div class="mui-card-footer">
+		   			<a>本周开房数：220间，退房数：174间，订房数：56间，预接待：53间，售卡数：0张，充值数：6000元。</a>
+		   		</div>
+			   </div>
+			</div>
+		</div>
+		<!--续费-->
+		<div id="xufei" class="mui-control-content">
+			<div class="mui-card" style="padding: 0;margin: 0;">
+				<div class="mui-card-header" style="padding: 0;margin: 0;">
+					<table border="0" style="width: 100%;background: #26C0C0; color: #FFF; font-size: small;">
+						<tr>
+							<td rowspan="5" style="width:20%; border-right: 1px solid #fff;">
+								<div class="picture">
+									<img src="__PUBLIC__/image/wo.jpg" style="width: 100%; height: 100%;border-radius: 50%;">
+								</div>
+								<span style="margin:16px;">黄豪</span>
+							</td>			
+						</tr>
+						<tr>
+							<td>丹迪酒店 第105次登录</td>	
+						</tr>
+						<tr>
+							<td>上次登录：2018-08-17 11:51:59</td>
+						</tr>
+						<tr>
+							<td>起始时间：2018-07-06 15:48:45</td>
+						</tr>
+						<tr>	
+							<td>失效时间：2018-10-06 15:48:45</td>
+						</tr>			
+					</table>					
+				</div>
+				<div id="word" class="mui-card-content">
+				我们的数据通过加密技术放在阿里云端，为了更好的服务客户，并持续的给版本升级，期限过后，每客户端仅仅收取100元/年的阿里云服务器租用费和升级服务费。
+				以确保我们持续为客户提供更强大的数据服务。感谢您的支持和理解！
+				</div>			
+				<div class="mui-card-footer">
+					<span id="switch">房价变更通知</span>
+					<div class="mui-switch">
+						<div class="mui-switch-handle"></div>
+					</div>
+					<span id="switch">资金变更通知</span>
+					<div class="mui-switch">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-card" style="margin:10px 0px;">	
+				<div class="mui-card-content" style="height: 35px;">
+					<span id="zi">100元/年</span>
+					<div class="pingjia" style="height: 35px;">
+						<a href="../xufei/pingjia.html" style="color: #FFF;">评价</a>
+					</div>
+					<div class="xianzaizhifu" style="height: 35px;">
+						<a href="huanghao.html" style="color: #FFF;">现在支付</a>
+					</div>						
+				</div>
+			</div>
+			<div class="mui-card" style="margin: 0;">
+				<table border="1" style="width: 100%; font-size:12px; border:1px solid #EFEFF4;" >
+					<thead>
+						<tr>
+							<td>统计类型</td>
+							<td>日房数</td>
+							<td>日房价</td>
+							<td>日入住率</td>
+						</tr>						
+					</thead>
+					<tbody>			
+						<tr>
+							<td>网络客户</td>
+							<td>15.50</td>
+							<td>3695.04</td>
+							<td>25.00%</td>
+	
+						</tr>
+						<tr>
+							<td>会员卡</td>
+							<td>0.00</td>
+							<td>0.00</td>
+							<td>0.00%</td>
+	
+						</tr>
+						<tr>
+							<td>1行</td>
+							<td>70.00</td>
+							<td>3695.04</td>
+							<td>25.00%</td>
+						</tr>
+					</tbody>
+				</table>				
+			</div>
+			<div id="card" class="card mui-card" style="margin: 8px 0px;">
+				<div class="mui-card-content">
+					电脑端数据更丰富还支持连锁哦！请用电脑浏览器打开1.1880880.com，然后用您的微信扫一扫即可登录。
+				</div>
+			</div>		
+	</div>
+	<script src="__PUBLIC__/js/mui.picker.js" ></script>
+	<script src="__PUBLIC__/js/mui.min.js"></script>
+	<script src="__PUBLIC__/js/echarts-all.js"></script>
+	<script src="__PUBLIC__/js/index.js" ></script>
+	<script type="text/javascript">
+		mui.init();	
+	</script>	
+</body>
+</html>
